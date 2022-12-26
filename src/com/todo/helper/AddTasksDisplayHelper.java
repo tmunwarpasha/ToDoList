@@ -23,8 +23,8 @@ import edu.emory.mathcs.backport.java.util.Collections;
 
 public class AddTasksDisplayHelper {
 	
-	private static final Logger
-    LOGGER = LogManager.getLogger(AddTasksDisplayHelper.class);
+	//private static final Logger
+    //LOGGER = LogManager.getLogger(AddTasksDisplayHelper.class);
 
 	public static void addTask(ToDoMBean toDoMBean, ToDoData toDoData) throws IOException {
 
@@ -39,7 +39,7 @@ public class AddTasksDisplayHelper {
 		BufferedReader reader = ToDoUtil.getReader(toDoMBean);
 		ToDoUtil.initTodayTasks(toDoMBean);
 
-		LOGGER.error("This is an ERROR level log message!");
+		//LOGGER.error("This is an ERROR level log message!");
 
 		String newlyAddedTaskDate = toDoData.toString().split(ToDoConstants.splitString)[0];
 		while((readLine = reader.readLine())!=null) {
