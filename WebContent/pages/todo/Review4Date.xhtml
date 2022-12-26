@@ -1,0 +1,20 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component" lang="en">
+	
+	<h:outputLabel value="#{toDoMBean.errorMessageRT}" style="color:red"></h:outputLabel>
+	<h:panelGrid columns="3">
+	<h:outputLabel value="Date:"></h:outputLabel>
+	<ace:dateTimeEntry id="cal-r" renderAsPopup="true" pattern="yyyy-MM-dd"  
+	style="background-color:yellow;width:10px;height:10px;" value="#{toDoMBean.reviewDate}" showOn="both" immediate="true">
+	
+	</ace:dateTimeEntry>
+	<h:commandButton value="Review" action="#{toDoMBean.reviewTasksAction}"  styleClass="button"></h:commandButton>
+	</h:panelGrid>
+	
+	<h:commandButton value="Display Future Tasks" action="#{toDoMBean.loadPage}"  styleClass="button"></h:commandButton>
+	
+</ui:composition>

@@ -1,0 +1,22 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component" lang="en">
+	<br/>
+	<h:outputLabel style="font-family: Verdana,Arial,sans-serif;"
+		value="Select Plan Type:"></h:outputLabel>
+	<h:panelGrid columns="1">
+		<h:outputLabel/>
+		<h:outputLabel/>
+		<ice:selectOneRadio value="#{toDoMBean.planType}"
+			valueChangeListener="#{toDoMBean.planTypeListener}"
+			style="color:blue;font-family: Verdana,Arial,sans-serif;"
+			partialSubmit="true" immediate="true">
+			<f:selectItem itemLabel="Official" itemValue="Official"></f:selectItem>
+			<f:selectItem itemLabel="Personal" itemValue="Personal"></f:selectItem>
+		</ice:selectOneRadio>
+
+	</h:panelGrid>
+</ui:composition>

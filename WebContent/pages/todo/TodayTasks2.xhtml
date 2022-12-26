@@ -1,0 +1,16 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component" lang="en">
+	<h:panelGrid columns="1" style="overflow:scroll;">
+	
+	
+								<ice:selectManyCheckbox layout="pageDirection"  
+								 value="#{toDoMBean.selectedTodayTasks}">
+									<f:selectItem itemLabel="task1" itemValue="task1" ></f:selectItem>
+									<f:selectItem itemLabel="task2" itemValue="task2" ></f:selectItem>
+								</ice:selectManyCheckbox>
+	</h:panelGrid>
+</ui:composition>

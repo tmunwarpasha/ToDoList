@@ -1,0 +1,27 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component" lang="en">
+	<h:outputLabel value="#{toDoMBean.errorMessage}" style="color:red"></h:outputLabel>
+	<h:panelGrid columns="6">
+		<h:commandButton value="Edit" action="#{toDoMBean.editSelected}"
+			styleClass="button"></h:commandButton>
+		<h:commandButton value="Mark Complete"
+			action="#{toDoMBean.markCompleted}" styleClass="button"></h:commandButton>
+		<h:commandButton value="Delete" action="#{toDoMBean.removeSelected}"
+			styleClass="button"></h:commandButton>
+		<ace:dateTimeEntry id="cal-cbp" renderAsPopup="true"
+			pattern="yyyy-MM-dd"
+			style="background-color:yellow;width:10px;height:10px;"
+			value="#{toDoMBean.moveToDate}" showOn="both" immediate="true">
+
+		</ace:dateTimeEntry>
+		<h:commandButton value="Move To Date"
+			action="#{toDoMBean.moveTasksToDate}" styleClass="button"></h:commandButton>
+		<h:commandButton value="Unselect All"
+			action="#{toDoMBean.unselectAll}" styleClass="button"></h:commandButton>
+	</h:panelGrid>
+
+</ui:composition>

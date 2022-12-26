@@ -1,0 +1,87 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component" lang="en">
+	<h:outputLabel value="#{toDoMBean.errorMessageAT}" style="color:red;"></h:outputLabel>
+	<h:panelGrid columns="2" >
+		<h:outputLabel value="Task:"></h:outputLabel>
+		<ace:textAreaEntry id="taskName"
+			value="#{toDoMBean.toDoData.toDoTaskName}" cols="20" rows="6"
+			partialSubmit="true"></ace:textAreaEntry>
+			
+		<h:outputLabel value="Task Type:"></h:outputLabel>
+		<ice:selectOneRadio value="#{toDoMBean.toDoTaskType}" partialSubmit="true">
+			<f:selectItem itemLabel="One time" itemValue="ott"></f:selectItem>
+			<f:selectItem itemLabel="Recurring" itemValue="rcr"></f:selectItem>
+		</ice:selectOneRadio>
+		
+		<h:outputLabel value="To Do on:" rendered="#{toDoMBean.toDoTaskType == 'ott'}"></h:outputLabel>
+		<ace:dateTimeEntry id="cal" renderAsPopup="true" pattern="yyyy-MM-dd"
+		rendered="#{toDoMBean.toDoTaskType == 'ott'}"
+			style="background-color:aqua" value="#{toDoMBean.toDoData.toDoDate}"
+			showOn="both" immediate="true" mindate="#{toDoMBean.todayDate}">
+		</ace:dateTimeEntry>
+		
+		<h:outputLabel value="Recurring Type" rendered="#{toDoMBean.toDoTaskType == 'rcr'}"></h:outputLabel>
+		<ice:selectOneRadio value="#{toDoMBean.recurringType}" partialSubmit="true"
+		rendered="#{toDoMBean.toDoTaskType == 'rcr'}">
+			<f:selectItem itemLabel="Daily" itemValue="daily"></f:selectItem>
+			<f:selectItem itemLabel="Weekly" itemValue="weekly"></f:selectItem>
+			<f:selectItem itemLabel="Monthly" itemValue="monthly"></f:selectItem>
+		</ice:selectOneRadio>
+		
+		<h:outputLabel value="Week Day" rendered="#{toDoMBean.toDoTaskType == 'rcr' and toDoMBean.recurringType == 'weekly'}"></h:outputLabel>
+		<ice:selectManyCheckbox layout="pageDirection" rendered="#{toDoMBean.toDoTaskType == 'rcr' and toDoMBean.recurringType == 'weekly'}"
+			value="#{toDoMBean.forWeekDays}" partialSubmit="true">
+			<f:selectItem itemLabel="MONDAY" itemValue="1"></f:selectItem>
+			<f:selectItem itemLabel="TUESDAY" itemValue="2"></f:selectItem>
+			<f:selectItem itemLabel="WEDNESDAY" itemValue="3"></f:selectItem>
+			<f:selectItem itemLabel="THURSDAY" itemValue="4"></f:selectItem>
+			<f:selectItem itemLabel="FRIDAY" itemValue="5"></f:selectItem>
+			<f:selectItem itemLabel="SATURDAY" itemValue="6"></f:selectItem>
+			<f:selectItem itemLabel="SUNDAY" itemValue="7"></f:selectItem>
+		</ice:selectManyCheckbox>
+		
+		<h:outputLabel value="Weekends:" rendered="#{toDoMBean.toDoTaskType == 'rcr' and toDoMBean.recurringType == 'daily'}"></h:outputLabel>
+		<ice:selectOneRadio value="#{toDoMBean.includeWeekends}" partialSubmit="true"
+		rendered="#{toDoMBean.toDoTaskType == 'rcr' and toDoMBean.recurringType == 'daily'}">
+			<f:selectItem itemLabel="Exclude" itemValue="No"></f:selectItem>
+			<f:selectItem itemLabel="Include" itemValue="Yes"></f:selectItem>
+		</ice:selectOneRadio>
+		
+		<h:outputLabel value="Day of the Month" rendered="#{toDoMBean.toDoTaskType == 'rcr' and toDoMBean.recurringType == 'monthly'}"></h:outputLabel>
+		<h:selectManyListbox value="#{toDoMBean.selectedDaysOfMonth}" size="10"
+		rendered="#{toDoMBean.toDoTaskType == 'rcr' and toDoMBean.recurringType == 'monthly'}">
+			<f:selectItems value="#{toDoMBean.daysOfMonth}"></f:selectItems>
+		</h:selectManyListbox>
+		
+		<h:outputLabel value="From:" rendered="#{toDoMBean.toDoTaskType == 'rcr'}" immediate="true"></h:outputLabel>
+		<ace:dateTimeEntry id="calf" renderAsPopup="true" pattern="yyyy-MM-dd"
+			style="background-color:aqua" value="#{toDoMBean.fromDate}"
+			showOn="both" immediate="true" mindate="#{toDoMBean.todayDate}"
+			rendered="#{toDoMBean.toDoTaskType == 'rcr'}">
+		</ace:dateTimeEntry>
+		
+		<h:outputLabel value="Till:" rendered="#{toDoMBean.toDoTaskType == 'rcr'}"></h:outputLabel>
+		<ace:dateTimeEntry id="calt" renderAsPopup="true" pattern="yyyy-MM-dd"
+			style="background-color:aqua" value="#{toDoMBean.tillDate}"
+			showOn="both" immediate="true" mindate="#{toDoMBean.todayDate}"
+			rendered="#{toDoMBean.toDoTaskType == 'rcr'}">
+		</ace:dateTimeEntry>
+		
+		<h:outputLabel value="Priority:"></h:outputLabel>
+		<ice:selectOneRadio value="#{toDoMBean.toDoData.toDoTaskPriority}" partialSubmit="true">
+			<f:selectItem itemLabel="High" itemValue="High"></f:selectItem>
+			<f:selectItem itemLabel="Medium" itemValue="Medium"></f:selectItem>
+			<f:selectItem itemLabel="Low" itemValue="Low"></f:selectItem>
+		</ice:selectOneRadio>
+		
+		<h:outputLabel value="">
+		</h:outputLabel>
+		<h:commandButton value="Add/Update Task" styleClass="button"
+			style="font-family: Verdana,Arial,sans-serif;"
+			action="#{toDoMBean.addTask}"></h:commandButton>
+	</h:panelGrid>
+</ui:composition>

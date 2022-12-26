@@ -1,0 +1,30 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component" lang="en">
+	
+	<h:panelGrid columns="1" style="overflow:scroll;">
+	
+	<h:dataTable value="#{toDoMBean.reviewTasks}" var="reviewTasks4Date" columns="1">
+		<h:column>
+		<h:outputLabel value="#{reviewTasks4Date.date}" style="#{reviewTasks4Date.dateStyle}"></h:outputLabel>
+			<h:dataTable value="#{reviewTasks4Date.p2TMap}" var="priority2Task" columns="1">
+				<h:column>
+					<h:outputLabel value="#{priority2Task.priority}" style="#{priority2Task.style}"></h:outputLabel>
+					<h:dataTable value="#{priority2Task.tasks}" var="task" columns="1">
+						<h:column>
+								<ice:selectBooleanCheckbox layout="pageDirection" value="#{toDoMBean.checkMap[task.taskValue]}">
+								</ice:selectBooleanCheckbox>
+								<h:outputLabel value="#{task.taskLabel}" ></h:outputLabel>
+						</h:column>					
+					</h:dataTable>
+				</h:column>
+			</h:dataTable>
+		</h:column>
+	
+	</h:dataTable>
+
+	</h:panelGrid>
+</ui:composition>

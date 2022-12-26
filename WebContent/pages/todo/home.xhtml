@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" xml:lang="en" lang="en"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ice="http://www.icesoft.com/icefaces/component" >
+<h:head>
+<title>Tasks And Schedules - Simple Manager (TASSM)</title>
+	<style>
+
+
+.button {
+	font-size: 16px;
+	text-align: center;
+	cursor: pointer;
+	outline: none;
+	color: #fff;
+	background-color: #A4AA6D;
+	border: none;
+	/* border-radius: 5px; */
+	box-shadow: 3px 5px #999;
+}
+
+.button:hover {
+	background-color: #3e8e41
+}
+
+.button:active {
+	background-color: #3e8e41;
+	box-shadow: 0 5px #666;
+	transform: translateY(3px);
+}
+</style>
+</h:head>
+
+
+<h:body>
+	<h:form id="home">
+		<div id="9"
+			style="position: fixed; top: 5px; left: 330px; width: 625px; height: 30px; /* border-style: groove; border-radius: 10px; */ background-color: #066; "
+			align="center">
+			<h:outputLabel value="TASSM App"
+				style="font-weight: bold; font-family:serif;font-size:30px;color:#FFF"></h:outputLabel>
+		</div>
+		<div id="10"
+			style="position: fixed; top: 5px; left: 5px; width: 320px; height: 85px; /* border-style: groove; border-radius: 10px; */ background-color: #FFCCCC;"
+			align="center">
+			<ui:include src="PlanType.xhtml"></ui:include>
+		</div>
+		<div id="1"
+			style="overflow-y: auto;position: fixed; top: 95px; left: 5px; width: 320px; height: 480px; /* border-style: groove; border-radius: 10px; */ background-color: aqua; "
+			align="center" >
+			 <!-- style="font-family: Verdana, Arial, sans-serif;" --><p>Add Tasks to
+				your To Do List</p>
+			<ui:include src="AddTasks.xhtml"></ui:include>
+		</div>
+		<div id="5"
+			style="position: fixed; top: 40px; left: 330px; width: 625px; height: 50px; /* border-style: groove; border-radius: 10px; */ background-color: #FFEFD5;"
+			align="center">
+			<ui:include src="CommonButtonPanel.xhtml"></ui:include>
+		</div>
+		<div id="2"
+			style="overflow-y: auto; position: fixed; top: 95px; left: 330px; width: 310px; height: 480px; /* border-style: groove; border-radius: 10px; */ background-color: #98FB98;">
+			<p style="font-family: Verdana, Arial, sans-serif;">Pending Tasks from past</p>
+			<ui:include src="PendingTasks.xhtml"></ui:include>
+		</div>
+		<div id="7"
+			style="overflow-y: auto; position: fixed; top: 95px; left: 645px; width: 310px; height: 480px; /* border-style: groove; border-radius: 10px; */ background-color: #08FB9F;">
+						<p style="font-family: Verdana, Arial, sans-serif;">Today's Tasks</p>
+			<ui:include src="TodayTasks.xhtml"></ui:include>
+		</div>
+		<div id="reviewD"
+			style="position: fixed; top: 5px; left: 960px; width: 310px; height: 85px; /* border-style: groove; border-radius: 10px; */ background-color: #FFCCCC;"
+			align="center">
+			<ui:include src="Review4Date.xhtml"></ui:include>
+
+		</div>
+		<div id="reviewT"
+			style="overflow-y: auto; position: fixed; top: 95px; left: 960px; width: 310px; height: 480px; /* border-style: groove; border-radius: 10px; */ background-color: aqua;"
+			>
+			<p><h:outputLabel rendered="#{!toDoMBean.displayFutureTasksButton}" value="Future Tasks"
+				style="font-family: Verdana,Arial,sans-serif;"></h:outputLabel></p>
+			<ui:include src="ReviewTasks.xhtml"></ui:include>
+		</div>
+<!--  		<div id="8"
+			style="position: fixed; top: 540px; left: 5px; width: 320px; height: 30px; /* border-style: groove; border-radius: 10px; */ background-color: #066;color: white"
+			align="center">
+			
+			<label>Developed by : </label> <a
+				href="https://www.linkedin.com/in/munwar-tadipatri-b2036334/"
+				id="myLinkedInLink" title="View My LinkedIn Profile" target="_blank" style="color:white">
+				<h:outputLabel value="#{toDoMBean.developedBy}"
+					style="font-weight: bold; font-family:sans-serif;font-size: large;color:white"></h:outputLabel>
+			</a>
+		</div> 
+		 		<div id="07192022"
+			style="position: fixed; top: 540px; left: 960px; width: 310px; height: 30px; /* border-style: groove; border-radius: 10px; */ background-color: #066;color: white"
+			align="center">
+			<label style="position: fixed; top: 545px; left: 990px;">Contact : </label>
+			<label style="position: fixed; top: 545px; left: 1060px;font-weight: bold; font-family:sans-serif;font-size: large;color:white" > <strong>+91-9703-929-519 </strong></label> 
+			
+		</div>  -->
+	</h:form>
+</h:body>
+</html>
